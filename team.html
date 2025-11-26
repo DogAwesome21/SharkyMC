@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SharkyMC — Our Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-left">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="SharkyMC" class="logo">
+        <span class="brand-text">SharkyMC</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="team.html" class="nav-link active">Our Team</a>
+      <a href="rules.html" class="nav-link">Rules</a>
+      <a class="discord-cta" href="https://discord.gg/Jx9tveNVDY" target="_blank" rel="noopener">
+        <i class='bx bxl-discord'></i> Join Discord
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="team-hero">
+      <h1>Our Team</h1>
+      <p class="muted">These are the people that make SharkyMC possible.</p>
+    </section>
+
+    <section class="team-grid" id="teamGrid">
+      <!-- five placeholders -->
+      <article class="team-card">
+        <div class="avatar" style="background-image:url('https://mc-heads.net/avatar/Player1/100')"></div>
+        <h4>Player1</h4>
+        <p class="muted">Owner</p>
+      </article>
+
+      <article class="team-card">
+        <div class="avatar" style="background-image:url('https://mc-heads.net/avatar/Player2/100')"></div>
+        <h4>Player2</h4>
+        <p class="muted">Manager</p>
+      </article>
+
+      <article class="team-card">
+        <div class="avatar" style="background-image:url('https://mc-heads.net/avatar/Player3/100')"></div>
+        <h4>Player3</h4>
+        <p class="muted">Developer</p>
+      </article>
+
+      <article class="team-card">
+        <div class="avatar" style="background-image:url('https://mc-heads.net/avatar/Player4/100')"></div>
+        <h4>Player4</h4>
+        <p class="muted">Moderator</p>
+      </article>
+
+      <article class="team-card">
+        <div class="avatar" style="background-image:url('https://mc-heads.net/avatar/Player5/100')"></div>
+        <h4>Player5</h4>
+        <p class="muted">Helper</p>
+      </article>
+    </section>
+
+    <section class="apply-section">
+      <div class="apply-left">
+        <h3>You could be next</h3>
+        <p class="muted">Apply to join our team and help shape SharkyMC.</p>
+      </div>
+      <div class="apply-right">
+        <a class="btn btn-primary" href="#" id="applyNow">Apply Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year2"></span> SharkyMC</div>
+    <div><a href="rules.html" class="muted">Rules</a></div>
+  </footer>
+
+  <script>
+    // filler interactivity (no external dependencies)
+    document.getElementById('year2').textContent = new Date().getFullYear();
+    document.getElementById('applyNow').addEventListener('click', e=>{
+      e.preventDefault();
+      // placeholder - link to your real form later
+      window.open('#', '_blank');
+    });
+  </script>
+</body>
+</html>
