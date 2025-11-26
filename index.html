@@ -1,63 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SharkyMC</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SharkyMC — Home</title>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- GSAP for polished animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
-
 <body>
-<canvas id="bgCanvas"></canvas>
 
-<header class="navbar">
-    <div class="nav-left">
-        <img src="assets/logo.png" class="logo" alt="Logo">
-        <span class="nav-title">SharkyMC</span>
+  <!-- Decorative background canvas -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="assets/logo.png" alt="SharkyMC logo" class="logo" onerror="this.style.display='none'">
+      <div class="brand-text">
+        <div class="title">SharkyMC</div>
+        <div class="subtitle">Premium Minecraft community</div>
+      </div>
     </div>
 
-    <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="team.html">Our Team</a>
-        <a href="rules.html">Rules</a>
-
-        <a href="https://discord.gg/Jx9tveNVDY" target="_blank" class="discord-nav-btn">
-            Join Discord
-        </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="team.html" class="nav-link">Our Team</a>
+      <a href="rules.html" class="nav-link">Rules</a>
+      <a href="https://discord.gg/Jx9tveNVDY" target="_blank" rel="noopener" class="discord-nav-btn">Join Discord</a>
     </nav>
-</header>
+  </header>
 
-<section class="hero">
-    <h1 class="hero-title">Welcome to SharkyMC</h1>
-    <p class="hero-sub">A next-generation Minecraft experience</p>
+  <main class="container">
 
-    <div class="discord-container">
-        <a class="discord-btn" href="https://discord.gg/Jx9tveNVDY" target="_blank">
-            Join our Discord
-        </a>
-    </div>
+    <!-- Panel 1: Title + Description -->
+    <section class="glass-panel panel-intro" id="panelIntro" aria-labelledby="introHeading">
+      <h1 id="introHeading" class="big-heading">Welcome to <span class="accent">SharkyMC</span></h1>
+      <p class="lead">A next-generation Minecraft experience — friendly community, custom minigames, stable performance.</p>
+      <div class="intro-cta">
+        <a href="https://discord.gg/Jx9tveNVDY" target="_blank" class="btn btn-primary">Join Discord</a>
+        <button id="copyIpMain" class="btn btn-ghost">Copy Java IP</button>
+      </div>
+    </section>
 
-    <div class="ip-box">
-        <h2>Java Edition</h2>
-        <p id="javaIp">sharkymc.falixsrv.me</p>
-        <button id="copyJava" class="copy-btn">Copy IP</button>
-
-        <h2 style="margin-top:18px;">Bedrock Edition</h2>
-        <p id="bedrockIp">sharkymc.falixsrv.me</p>
-        <p class="bedrock-port">Port: 42914</p>
-        <button id="copyBedrock" class="copy-btn">Copy Bedrock</button>
-    </div>
-
-    <div class="status-card" id="statusCard">
-        <div id="statusDot" class="status-dot"></div>
-        <div>
-            <p id="playersCount">Checking server...</p>
-            <p id="serverMotd" class="motd"></p>
+    <!-- Panel 2: Server Status -->
+    <section class="glass-panel panel-status" id="panelStatus" aria-labelledby="statusHeading">
+      <h2 id="statusHeading">Server Status</h2>
+      <div class="status-layout">
+        <div class="status-left">
+          <div id="statusDot" class="status-dot" aria-hidden="true"></div>
+          <div>
+            <div id="playersCount" class="status-players">Checking...</div>
+            <div id="serverMotd" class="status-motd muted"></div>
+          </div>
         </div>
-    </div>
-</section>
 
-<script src="app.js"></script>
+        <div class="status-right">
+          <div class="status-meta">
+            <div class="meta-label">Java</div>
+            <div class="meta-value" id="javaIp">sharkymc.falixsrv.me</div>
+            <button class="minor-btn" id="copyJava">Copy</button>
+          </div>
+
+          <div class="status-meta">
+            <div class="meta-label">Bedrock</div>
+            <div class="meta-value" id="bedrockIp">sharkymc.falixsrv.me : 42914</div>
+            <button class="minor-btn" id="copyBedrock">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 3: IP + Discord (separate) -->
+    <section class="glass-panel panel-ips" id="panelIps" aria-labelledby="ipsHeading">
+      <h2 id="ipsHeading">Connect</h2>
+
+      <div class="ips-grid">
+        <div class="ip-card">
+          <div class="ip-role">Java</div>
+          <div class="ip-value">sharkymc.falixsrv.me</div>
+          <div class="ip-actions">
+            <button class="btn small" id="copyJava2">Copy IP</button>
+            <a class="btn outline" href="#" id="voteLink">Vote / Info</a>
+          </div>
+        </div>
+
+        <div class="ip-card">
+          <div class="ip-role">Bedrock</div>
+          <div class="ip-value">sharkymc.falixsrv.me : 42914</div>
+          <div class="ip-actions">
+            <button class="btn small" id="copyBedrock2">Copy IP</button>
+            <a class="btn outline" href="https://discord.gg/Jx9tveNVDY" target="_blank">Discord</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="muted note">No launcher button — copy the IP and join via your Minecraft client. Bedrock port shown above.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> SharkyMC</div>
+    <div class="footer-links"><a href="rules.html">Rules</a> · <a href="team.html">Team</a></div>
+  </footer>
+
 </body>
 </html>
