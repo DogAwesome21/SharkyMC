@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SharkyMC</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d6e95;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            width: 100%;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            background: #09384d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Discord BUTTON in navbar */
+        .discord-btn {
+            background: #0ea5e9;
+            border: 2px solid white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* PAGE LAYOUT */
+        .page { display: none; padding: 40px; }
+        .active { display: block; }
+
+        /* HOME PAGE */
+        .home-title {
+            font-size: 64px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .status-box {
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 20px;
+            width: 350px;
+            background: #0b5472;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 22px;
+            border: 2px solid white;
+        }
+
+        .discord-main-btn {
+            display: block;
+            width: 250px;
+            margin: 30px auto;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: #0ea5e9;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* TEAM PAGE */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-card {
+            background: #0b5472;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid white;
+        }
+
+        .team-card img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .apply-box {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 24px;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 6px;
+            background: #0ea5e9;
+            border: 2px solid white;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            margin-top: 15px;
+        }
+
+        /* RULES PAGE */
+        .rules-box {
+            background: #0b5472;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-links">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('team')">Our Team</a>
+            <a href="#" onclick="showPage('rules')">Rules</a>
+        </div>
+
+        <a href="https://discord.gg/Jx9tveNVDY" class="discord-btn">Join Discord</a>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="home-title">SharkyMC</div>
+
+        <a class="discord-main-btn" href="https://discord.gg/Jx9tveNVDY">Join Our Discord</a>
+
+        <div class="status-box" id="serverStatus">
+            Checking server status...
+        </div>
+    </div>
+
+    <!-- TEAM PAGE -->
+    <div id="team" class="page">
+        <h1>Our Team</h1>
+
+        <div class="team-container">
+            <div class="team-card">
+                <img src="https://mc-heads.net/avatar/Steve" />
+                <h3>Player 1</h3>
+                <p>Rank</p>
+            </div>
+            <div class="team-card">
+                <img src="https://mc-heads.net/avatar/Steve" />
+                <h3>Player 2</h3>
+                <p>Rank</p>
+            </div>
+            <div class="team-card">
+                <img src="https://mc-heads.net/avatar/Steve" />
+                <h3>Player 3</h3>
+                <p>Rank</p>
+            </div>
+            <div class="team-card">
+                <img src="https://mc-heads.net/avatar/Steve" />
+                <h3>Player 4</h3>
+                <p>Rank</p>
+            </div>
+            <div class="team-card">
+                <img src="https://mc-heads.net/avatar/Steve" />
+                <h3>Player 5</h3>
+                <p>Rank</p>
+            </div>
+        </div>
+
+        <div class="apply-box">
+            You could be next!
+            <br>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+    </div>
+
+    <!-- RULES PAGE -->
+    <div id="rules" class="page">
+        <h1>Rules</h1>
+
+        <div class="rules-box">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet
+            ipsum odio, nec suscipit justo tempor in. Nunc pretium sapien vel
+            magna cursus, sit amet congue risus vulputate. Donec malesuada...
+        </div>
+    </div>
+
+    <script>
+        /* PAGE SWITCHING */
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        /* SERVER STATUS WIDGET */
+        async function checkStatus() {
+            const statusBox = document.getElementById("serverStatus");
+
+            try {
+                const res = await fetch("https://api.mcsrvstat.us/2/play.sharkymc.net");
+                const data = await res.json();
+
+                if (!data.online) {
+                    statusBox.innerHTML = "Server is OFFLINE";
+                } else {
+                    statusBox.innerHTML =
+                        "Server is ONLINE<br>" + data.players.online + " players online";
+                }
+            } catch (e) {
+                statusBox.innerHTML = "Error retrieving status";
+            }
+        }
+
+        checkStatus();
+        setInterval(checkStatus, 5000);
+    </script>
+
+</body>
+</html>
