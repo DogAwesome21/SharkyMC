@@ -1,83 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SharkyMC — Our Team</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="app.js" defer></script>
+    <meta charset="UTF-8">
+    <title>SharkyMC • Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-
-  <canvas id="bgCanvas" aria-hidden="true"></canvas>
-
-  <header class="site-header">
-    <div class="brand">
-      <img src="assets/logo.png" alt="logo" class="logo" onerror="this.style.display='none'">
-      <div class="brand-text">
-        <div class="title">SharkyMC</div>
-        <div class="subtitle">Our Team</div>
-      </div>
-    </div>
-
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="team.html" class="nav-link active">Our Team</a>
-      <a href="rules.html" class="nav-link">Rules</a>
-      <a href="https://discord.gg/Jx9tveNVDY" target="_blank" rel="noopener" class="discord-nav-btn">Join Discord</a>
+    <nav class="navbar">
+        <div class="nav-left">SharkyMC</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="team.html">Our Team</a>
+            <a href="rules.html">Rules</a>
+        </div>
+        <a class="discord-button" href="https://discord.gg/Jx9tveNVDY" target="_blank">Join Discord</a>
     </nav>
-  </header>
 
-  <main class="container team-container">
-    <section class="glass-panel team-panel">
-      <h1>Meet the Team</h1>
-      <p class="lead muted">These are the people who keep SharkyMC running.</p>
+    <section class="team-section">
+        <h1>Our Team</h1>
 
-      <div class="team-grid">
-        <!-- Five placeholders -->
-        <article class="member">
-          <div class="headwrap"><img src="https://mc-heads.net/avatar/Player1/100" alt=""></div>
-          <h3>Player1</h3>
-          <div class="rank muted">Owner</div>
-        </article>
+        <div class="team-grid">
+            <div class="team-card glass">
+                <img src="https://mc-heads.net/head/Player1" class="head">
+                <h3>Player1</h3>
+                <p>Rank</p>
+            </div>
 
-        <article class="member">
-          <div class="headwrap"><img src="https://mc-heads.net/avatar/Player2/100" alt=""></div>
-          <h3>Player2</h3>
-          <div class="rank muted">Manager</div>
-        </article>
+            <div class="team-card glass">
+                <img src="https://mc-heads.net/head/Player2" class="head">
+                <h3>Player2</h3>
+                <p>Rank</p>
+            </div>
 
-        <article class="member">
-          <div class="headwrap"><img src="https://mc-heads.net/avatar/Player3/100" alt=""></div>
-          <h3>Player3</h3>
-          <div class="rank muted">Developer</div>
-        </article>
+            <div class="team-card glass">
+                <img src="https://mc-heads.net/head/Player3" class="head">
+                <h3>Player3</h3>
+                <p>Rank</p>
+            </div>
 
-        <article class="member">
-          <div class="headwrap"><img src="https://mc-heads.net/avatar/Player4/100" alt=""></div>
-          <h3>Player4</h3>
-          <div class="rank muted">Moderator</div>
-        </article>
+            <div class="team-card glass">
+                <img src="https://mc-heads.net/head/Player4" class="head">
+                <h3>Player4</h3>
+                <p>Rank</p>
+            </div>
 
-        <article class="member">
-          <div class="headwrap"><img src="https://mc-heads.net/avatar/Player5/100" alt=""></div>
-          <h3>Player5</h3>
-          <div class="rank muted">Helper</div>
-        </article>
-      </div>
+            <div class="team-card glass">
+                <img src="https://mc-heads.net/head/Player5" class="head">
+                <h3>Player5</h3>
+                <p>Rank</p>
+            </div>
+        </div>
 
-      <div class="apply-area">
-        <div class="apply-text">You could be next</div>
-        <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
-      </div>
+        <div class="apply-box">
+            <p>You could be next.</p>
+            <a href="#" class="apply-btn glass">Apply Now</a>
+        </div>
     </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>© <span id="year2"></span> SharkyMC</div>
-  </footer>
-
 </body>
 </html>
