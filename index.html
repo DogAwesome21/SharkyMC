@@ -1,113 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SharkyMC — Home</title>
-
-  <!-- Inter font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
-  <!-- GSAP for polished animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="app.js" defer></script>
+    <meta charset="UTF-8">
+    <title>SharkyMC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-
-  <!-- Decorative background canvas -->
-  <canvas id="bgCanvas" aria-hidden="true"></canvas>
-
-  <header class="site-header">
-    <div class="brand">
-      <img src="assets/logo.png" alt="SharkyMC logo" class="logo" onerror="this.style.display='none'">
-      <div class="brand-text">
-        <div class="title">SharkyMC</div>
-        <div class="subtitle">Premium Minecraft community</div>
-      </div>
-    </div>
-
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="team.html" class="nav-link">Our Team</a>
-      <a href="rules.html" class="nav-link">Rules</a>
-      <a href="https://discord.gg/Jx9tveNVDY" target="_blank" rel="noopener" class="discord-nav-btn">Join Discord</a>
+    <nav class="navbar">
+        <div class="nav-left">SharkyMC</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="team.html">Our Team</a>
+            <a href="rules.html">Rules</a>
+        </div>
+        <a class="discord-button" href="https://discord.gg/Jx9tveNVDY" target="_blank">Join Discord</a>
     </nav>
-  </header>
 
-  <main class="container">
-
-    <!-- Panel 1: Title + Description -->
-    <section class="glass-panel panel-intro" id="panelIntro" aria-labelledby="introHeading">
-      <h1 id="introHeading" class="big-heading">Welcome to <span class="accent">SharkyMC</span></h1>
-      <p class="lead">A next-generation Minecraft experience — friendly community, custom minigames, stable performance.</p>
-      <div class="intro-cta">
-        <a href="https://discord.gg/Jx9tveNVDY" target="_blank" class="btn btn-primary">Join Discord</a>
-        <button id="copyIpMain" class="btn btn-ghost">Copy Java IP</button>
-      </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SharkyMC</h1>
+            <p>The ultimate multiplayer Minecraft experience.</p>
+            <button class="copy-ip-btn" onclick="scrollToConnect()">Connect</button>
+        </div>
     </section>
 
-    <!-- Panel 2: Server Status -->
-    <section class="glass-panel panel-status" id="panelStatus" aria-labelledby="statusHeading">
-      <h2 id="statusHeading">Server Status</h2>
-      <div class="status-layout">
-        <div class="status-left">
-          <div id="statusDot" class="status-dot" aria-hidden="true"></div>
-          <div>
-            <div id="playersCount" class="status-players">Checking...</div>
-            <div id="serverMotd" class="status-motd muted"></div>
-          </div>
+    <section id="connect" class="connect-section glass">
+        <h2>Connect to SharkyMC</h2>
+
+        <div class="status-box glass">
+            <p id="status-text">Checking server status...</p>
+            <p id="players-online"></p>
         </div>
 
-        <div class="status-right">
-          <div class="status-meta">
-            <div class="meta-label">Java</div>
-            <div class="meta-value" id="javaIp">sharkymc.falixsrv.me</div>
-            <button class="minor-btn" id="copyJava">Copy</button>
-          </div>
+        <div class="ip-container">
+            <div class="glass ip-box">
+                <h3>Java IP</h3>
+                <p>sharkymc.falixsrv.me</p>
+            </div>
 
-          <div class="status-meta">
-            <div class="meta-label">Bedrock</div>
-            <div class="meta-value" id="bedrockIp">sharkymc.falixsrv.me : 42914</div>
-            <button class="minor-btn" id="copyBedrock">Copy</button>
-          </div>
+            <div class="glass ip-box">
+                <h3>Bedrock Port</h3>
+                <p>42914</p>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Panel 3: IP + Discord (separate) -->
-    <section class="glass-panel panel-ips" id="panelIps" aria-labelledby="ipsHeading">
-      <h2 id="ipsHeading">Connect</h2>
+    <script>
+        function scrollToConnect() {
+            document.getElementById("connect").scrollIntoView({ behavior: "smooth" });
+        }
 
-      <div class="ips-grid">
-        <div class="ip-card">
-          <div class="ip-role">Java</div>
-          <div class="ip-value">sharkymc.falixsrv.me</div>
-          <div class="ip-actions">
-            <button class="btn small" id="copyJava2">Copy IP</button>
-            <a class="btn outline" href="#" id="voteLink">Vote / Info</a>
-          </div>
-        </div>
+        async function fetchStatus() {
+            try {
+                const res = await fetch("https://api.mcsrvstat.us/2/sharkymc.falixsrv.me");
+                const data = await res.json();
 
-        <div class="ip-card">
-          <div class="ip-role">Bedrock</div>
-          <div class="ip-value">sharkymc.falixsrv.me : 42914</div>
-          <div class="ip-actions">
-            <button class="btn small" id="copyBedrock2">Copy IP</button>
-            <a class="btn outline" href="https://discord.gg/Jx9tveNVDY" target="_blank">Discord</a>
-          </div>
-        </div>
-      </div>
+                if (data.online) {
+                    document.getElementById("status-text").innerHTML = "Server is ONLINE";
+                    document.getElementById("players-online").innerHTML =
+                        "Players Online: " + data.players.online;
+                } else {
+                    document.getElementById("status-text").innerHTML = "Server is OFFLINE";
+                    document.getElementById("players-online").innerHTML = "";
+                }
+            } catch (e) {
+                document.getElementById("status-text").innerHTML = "Error fetching status.";
+            }
+        }
 
-      <p class="muted note">No launcher button — copy the IP and join via your Minecraft client. Bedrock port shown above.</p>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div>© <span id="year"></span> SharkyMC</div>
-    <div class="footer-links"><a href="rules.html">Rules</a> · <a href="team.html">Team</a></div>
-  </footer>
-
+        fetchStatus();
+        setInterval(fetchStatus, 30000);
+    </script>
 </body>
 </html>
