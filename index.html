@@ -1,98 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SharkyMC — Home</title>
-
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <!-- GSAP for smooth animation -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <!-- Simple icons for Discord -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css">
-
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharkyMC</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
+
 <body>
-  <header class="nav">
+<canvas id="bgCanvas"></canvas>
+
+<header class="navbar">
     <div class="nav-left">
-      <a class="brand" href="/">
-        <img src="assets/logo.png" alt="SharkyMC" class="logo">
-        <span class="brand-text">SharkyMC</span>
-      </a>
+        <img src="assets/logo.png" class="logo" alt="Logo">
+        <span class="nav-title">SharkyMC</span>
     </div>
 
     <nav class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="team.html" class="nav-link">Our Team</a>
-      <a href="rules.html" class="nav-link">Rules</a>
-      <a class="discord-cta" href="https://discord.gg/Jx9tveNVDY" target="_blank" rel="noopener">
-        <i class='bx bxl-discord'></i> Join Discord
-      </a>
+        <a href="index.html">Home</a>
+        <a href="team.html">Our Team</a>
+        <a href="rules.html">Rules</a>
+
+        <a href="https://discord.gg/Jx9tveNVDY" target="_blank" class="discord-nav-btn">
+            Join Discord
+        </a>
     </nav>
-  </header>
+</header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">Welcome to <span>SharkyMC</span></h1>
-        <p class="hero-sub">Fast. Friendly. Fearless. Join the adventure, minigames, and events.</p>
+<section class="hero">
+    <h1 class="hero-title">Welcome to SharkyMC</h1>
+    <p class="hero-sub">A next-generation Minecraft experience</p>
 
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="https://discord.gg/Jx9tveNVDY" target="_blank" rel="noopener">
-            <i class='bx bxl-discord'></i> Join Discord
-          </a>
-          <a class="btn btn-ghost" id="copyIpBtn" title="Copy IP">Copy IP</a>
+    <div class="discord-container">
+        <a class="discord-btn" href="https://discord.gg/Jx9tveNVDY" target="_blank">
+            Join our Discord
+        </a>
+    </div>
+
+    <div class="ip-box">
+        <h2>Java Edition</h2>
+        <p id="javaIp">sharkymc.falixsrv.me</p>
+        <button id="copyJava" class="copy-btn">Copy IP</button>
+
+        <h2 style="margin-top:18px;">Bedrock Edition</h2>
+        <p id="bedrockIp">sharkymc.falixsrv.me</p>
+        <p class="bedrock-port">Port: 42914</p>
+        <button id="copyBedrock" class="copy-btn">Copy Bedrock</button>
+    </div>
+
+    <div class="status-card" id="statusCard">
+        <div id="statusDot" class="status-dot"></div>
+        <div>
+            <p id="playersCount">Checking server...</p>
+            <p id="serverMotd" class="motd"></p>
         </div>
-      </div>
+    </div>
+</section>
 
-      <div class="status-card" id="statusCard" aria-live="polite">
-        <div class="status-header">
-          <div>
-            <div class="status-title">Server Status</div>
-            <div class="server-ip" id="serverIp">play.sharkymc.net</div>
-          </div>
-          <div class="status-dot" id="statusDot" aria-hidden></div>
-        </div>
-
-        <div class="status-body">
-          <div class="players" id="playersCount">Checking…</div>
-          <div class="server-motd" id="serverMotd"></div>
-        </div>
-
-        <div class="status-actions">
-          <a class="btn small" href="minecraft://play.sharkymc.net" id="playNow">Join (Launch)</a>
-          <a class="btn link" href="https://discord.gg/Jx9tveNVDY" target="_blank">Discord</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="features">
-      <div class="feature">
-        <h3>Active Community</h3>
-        <p>Daily events and friendly staff.</p>
-      </div>
-      <div class="feature">
-        <h3>Custom Minigames</h3>
-        <p>Unique game-modes built for fun.</p>
-      </div>
-      <div class="feature">
-        <h3>Secure & Fast</h3>
-        <p>Low-latency hosting and anti-cheat tools.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div>© <span id="year"></span> SharkyMC</div>
-    <div><a href="privacy.html" class="muted">Privacy</a> • <a href="rules.html" class="muted">Rules</a></div>
-  </footer>
-
-  <!-- subtle animated background canvas -->
-  <canvas id="bgCanvas"></canvas>
-
+<script src="app.js"></script>
 </body>
 </html>
